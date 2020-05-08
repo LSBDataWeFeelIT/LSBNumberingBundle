@@ -1,6 +1,8 @@
 LSBNumberingBundle
 ------------------
 
+[![Build Status](https://travis-ci.com/LSBDataWeFeelIT/LSBNumberingBundle.svg?branch=master)](https://travis-ci.com/LSBDataWeFeelIT/LSBNumberingBundle)
+
 This bundle provides functionality of generating subsequent numbers for any given object e.g. Order, Invoice etc. in Symfony 5 applications.
  
 It creates a simple config in system database, which stores current counter and context data.
