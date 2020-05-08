@@ -1,0 +1,24 @@
+language: php
+
+php:
+  - 7.2
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.2
+      env: COMPOSER_FLAGS="--prefer-lowest"
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+install:
+  - composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
+  - vendor/bin/simple-phpunit install
+
+script:
+  - composer validate --strict --no-check-lock
+  - vendor/bin/simple-phpunit -v
