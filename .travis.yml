@@ -20,5 +20,5 @@ install:
   - vendor/bin/simple-phpunit install
 
 script:
-  - composer validate --strict --no-check-lock
+ # - composer validate --strict --no-check-lock
   - vendor/bin/simple-phpunit -v
