@@ -8,13 +8,13 @@ This bundle provides functionality of generating subsequent numbers for any give
 It creates a simple config in system database, which stores current counter and context data.
 
 
-#### Installation
+### Installation
 
 ```
 composer require lsb/numbering-bundle
 ```
 
-#### Configuration
+### Configuration
 Configure the bundle by defining patterns and counter config data in **lsb_numbering.yaml** file.
 ```
 # examples of configuration
@@ -52,7 +52,7 @@ lsb_numbering:
 | {context_object}  | no | - | context object value  |
 
 
-#### Usage
+### Usage
 A subject object is any object you want to generate numbers for. It needs to implement NumberableInterface.
 
 ```
