@@ -6,6 +6,7 @@ namespace LSB\NumberingBundle\Tests;
 
 use LSB\NumberingBundle\Entity\NumberingCounterData;
 use LSB\NumberingBundle\Service\NumberingPatternResolver;
+use LSB\NumberingBundle\Model\Tag;
 use PHPUnit\Framework\TestCase;
 
 
@@ -15,7 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 class PatternResolverTest extends TestCase
 {
-    const TEST_PATTERN = 'FV/{year}/{number}/{object}';
+    const TEST_PATTERN = 'IN/{' . Tag::YEAR .'}/{'. Tag::NUMBER .'}/{'. Tag::CONTEXT_OBJECT .'}';
 
     public function testYearPatternResolver()
     {
