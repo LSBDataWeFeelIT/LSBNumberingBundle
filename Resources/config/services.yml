@@ -1,0 +1,11 @@
+services:
+
+    LSB\NumberingBundle\Service\NumberingGenerator:
+        public: true
+        arguments:
+            - '@doctrine'
+
+    lsb_numbering.numbering_generator:
+        alias: LSB\NumberingBundle\Service\NumberingGenerator
+        public: true
+

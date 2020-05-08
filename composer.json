@@ -1,0 +1,34 @@
+{
+  "name": "lsb/numbering-bundle",
+  "type": "symfony-bundle",
+  "description": "Number generator for Symfony applications",
+  "keywords": [
+    "number",
+    "generator"
+  ],
+  "homepage": "https://lsb.pl",
+  "authors": [
+    {
+      "name": "Piotr Bazylewicz",
+      "email": "piotr.bazylewicz@lsb.com.pl"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "symfony/framework-bundle": "5.0.*",
+    "doctrine/orm": "2.*",
+    "doctrine/doctrine-bundle": "2.*",
+    "symfony/validator": "5.0.*"
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "LSB\\NumberingBundle\\": ""
+    },
+    "exclude-from-classmap": [
+      "Tests/"
+    ]
+  }
+}
