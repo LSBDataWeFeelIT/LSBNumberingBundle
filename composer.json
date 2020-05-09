@@ -2,7 +2,9 @@
   "name": "lsb/numbering-bundle",
   "type": "symfony-bundle",
   "description": "Number generator for Symfony applications",
+  "license": "MIT",
   "keywords": [
+    "symfony",
     "number",
     "generator"
   ],
