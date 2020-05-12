@@ -24,19 +24,19 @@ class TimeContext
 
         switch ($timeContext) {
             case Tag::YEAR:
-                $res = (int)$date->format('Y');
+                $res = $date->format('Y');
                 break;
             case Tag::SEMESTER:
-                $res = (int)ceil($date->format('n') / 6);
+                $res = ceil($date->format('n') / 6);
                 break;
             case Tag::QUARTER:
-                $res = (int)ceil($date->format('n') / 3);
+                $res = ceil($date->format('n') / 3);
                 break;
             case Tag::MONTH:
-                $res = (int)$date->format('m');
+                $res = $date->format('m');
                 break;
             case Tag::WEEK:
-                $res = (int)$date->format('W');
+                $res = $date->format('W');
                 break;
             case Tag::DAY:
                 $res = $date->format('z');
@@ -46,7 +46,7 @@ class TimeContext
                 break;
         }
 
-        return $res;
+        return (int)$res;
     }
 
 
