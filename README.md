@@ -1,7 +1,7 @@
 LSBNumberingBundle
 ------------------
 
-[![Build Status](https://travis-ci.com/LSBDataWeFeelIT/LSBNumberingBundle.svg?branch=master)](https://travis-ci.com/LSBDataWeFeelIT/LSBNumberingBundle) [![Latest Stable Version](https://poser.pugx.org/lsb/numbering-bundle/v/stable)](https://packagist.org/packages/lsb/numbering-bundle) [![Total Downloads](https://poser.pugx.org/lsb/numbering-bundle/downloads)](https://packagist.org/packages/lsb/numbering-bundle)
+[![Latest Stable Version](https://poser.pugx.org/lsb/numbering-bundle/v/stable)](https://packagist.org/packages/lsb/numbering-bundle) [![Build Status](https://travis-ci.com/LSBDataWeFeelIT/LSBNumberingBundle.svg?branch=master)](https://travis-ci.com/LSBDataWeFeelIT/LSBNumberingBundle) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LSBDataWeFeelIT/LSBNumberingBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LSBDataWeFeelIT/LSBNumberingBundle/?branch=master)
 
 This bundle provides functionality of generating subsequent numbers for any given object e.g. Order, Invoice etc. in Symfony 5 applications.
  
