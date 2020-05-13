@@ -7,6 +7,10 @@
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
     </php>
 
+    <logging>
+        <log type="coverage-clover" target="coverage.clover"/>
+    </logging>
+
     <testsuites>
         <testsuite name="Numbering Bundle Test suite">
             <directory suffix="Test.php">./Tests</directory>
