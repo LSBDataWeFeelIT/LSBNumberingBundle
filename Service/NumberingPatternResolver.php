@@ -18,11 +18,11 @@ class NumberingPatternResolver
      * @return string
      * @throws \Exception
      */
-    static public function resolve(string $numberPatternString, NumberingCounterData $counterData, \DateTime $date = null): string
+    public function resolve(string $numberPatternString, NumberingCounterData $counterData, \DateTime $date = null): string
     {
-        $resolvedString = self::resolveNumberTag($numberPatternString, $counterData);
-        $resolvedString = self::resolveDateTags($resolvedString, $date);
-        $resolvedString = self::resolveContextObjectTag($resolvedString, $counterData);
+        $resolvedString = $this->resolveNumberTag($numberPatternString, $counterData);
+        $resolvedString = $this->resolveDateTags($resolvedString, $date);
+        $resolvedString = $this->resolveContextObjectTag($resolvedString, $counterData);
 
         return $resolvedString;
     }
@@ -33,7 +33,7 @@ class NumberingPatternResolver
      * @return string
      * @throws \Exception
      */
-    static private function resolveNumberTag(string $numberPatternString, NumberingCounterData $counterData): string
+    private function resolveNumberTag(string $numberPatternString, NumberingCounterData $counterData): string
     {
         $tag = Tag::NUMBER;
         $currentValue = $counterData->getCurrent();
@@ -65,7 +65,7 @@ class NumberingPatternResolver
      * @return string
      * @throws \Exception
      */
-    static private function resolveContextObjectTag(string $numberPatternString, NumberingCounterData $counterData): string
+    private function resolveContextObjectTag(string $numberPatternString, NumberingCounterData $counterData): string
     {
         $tag = Tag::CONTEXT_OBJECT;
         $currentValue = $counterData->getContextObjectValue();
@@ -89,7 +89,7 @@ class NumberingPatternResolver
      * @return string
      * @throws \Exception
      */
-    static private function resolveDateTags(string $numberPatternString, ?\DateTime $date = null): string
+    private function resolveDateTags(string $numberPatternString, ?\DateTime $date = null): string
     {
         foreach (Tag::DATE_TAGS as $tag) {
             $currentValue = TimeContext::getValueForTag($tag, $date);

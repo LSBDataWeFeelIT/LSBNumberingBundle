@@ -18,7 +18,7 @@ class NumberingPatternTagVerifier
      * @param array $counterConfig
      * @throws NumberingGeneratorException
      */
-    static public function verify(array $patternConfig, array $counterConfig): void
+    public function verify(array $patternConfig, array $counterConfig): void
     {
         // verify number tag
         preg_match_all(Tag::REG_EXPS[Tag::NUMBER], $patternConfig['pattern'], $matches);

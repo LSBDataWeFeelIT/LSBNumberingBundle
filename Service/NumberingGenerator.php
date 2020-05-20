@@ -34,13 +34,27 @@ class NumberingGenerator
     protected $doctrine;
 
     /**
+     * @var NumberingPatternTagVerifier
+     */
+    protected $tagVerifier;
+
+    /**
+     * @var NumberingPatternResolver
+     */
+    protected $patternResolver;
+
+    /**
      * NumberingGenerator constructor.
      * @param ManagerRegistry $doctrine
+     * @param NumberingPatternTagVerifier $tagVerifier
+     * @param NumberingPatternResolver $patternResolver
      */
-    public function __construct(ManagerRegistry $doctrine)
+    public function __construct(ManagerRegistry $doctrine, NumberingPatternTagVerifier $tagVerifier, NumberingPatternResolver $patternResolver)
     {
         $this->doctrine = $doctrine;
         $this->em = $this->doctrine->getManager();
+        $this->tagVerifier = $tagVerifier;
+        $this->patternResolver = $patternResolver;
     }
 
     /**
@@ -86,7 +100,7 @@ class NumberingGenerator
         $patternConfig = $this->getPatternForConfig($options->getConfigName());
 
         // verify pattern tags
-        NumberingPatternTagVerifier::verify($patternConfig, $counterConfig);
+        $this->tagVerifier->verify($patternConfig, $counterConfig);
 
         // get existing NumberingCounterData
         $counterData = $this->em->getRepository(NumberingCounterData::class)->getByConfigAndSubjectClass($counterConfig, $subjectClassName, $options->getContextObjectValue());
@@ -110,7 +124,7 @@ class NumberingGenerator
             }
 
             // resolve number from pattern
-            $resolvedNumber = NumberingPatternResolver::resolve($patternConfig['pattern'], $counterData, $options->getDate());
+            $resolvedNumber = $this->patternResolver->resolve($patternConfig['pattern'], $counterData, $options->getDate());
 
             $this->em->flush();
             $this->em->getConnection()->commit();

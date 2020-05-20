@@ -3,12 +3,10 @@ declare(strict_types=1);
 
 namespace LSB\NumberingBundle\Tests;
 
-
 use LSB\NumberingBundle\Entity\NumberingCounterData;
 use LSB\NumberingBundle\Service\NumberingPatternResolver;
 use LSB\NumberingBundle\Model\Tag;
 use PHPUnit\Framework\TestCase;
-
 
 /**
  * Class PatternResolverTest
@@ -16,24 +14,26 @@ use PHPUnit\Framework\TestCase;
  */
 class PatternResolverTest extends TestCase
 {
-    const TEST_PATTERN = 'IN/{' . Tag::YEAR .'}/{'. Tag::NUMBER .'}/{'. Tag::CONTEXT_OBJECT .'}';
 
-    public function testYearPatternResolver()
+    public function testPatternResolverContextObject()
     {
+        $testPattern = 'IN/{' . Tag::YEAR . '}/{' . Tag::NUMBER . '}/{' . Tag::CONTEXT_OBJECT . '}';
         $randNumber = rand(1, 10);
-        $currentYear = (new \DateTime)->format('Y');
         $testContextValue = 'TestContextValue';
 
-        $testNumberingData = (new NumberingCounterData)
-            ->setCurrent($randNumber)
-            ->setContextObjectValue($testContextValue);
+        $numberingCounterDataMock = $this->createMock(NumberingCounterData::class);
 
-        $resolvedNumber = NumberingPatternResolver::resolve(self::TEST_PATTERN, $testNumberingData);
+        $numberingCounterDataMock->method('getCurrent')->willReturn($randNumber);
+        $numberingCounterDataMock->method('getContextObjectValue')->willReturn($testContextValue);
 
-        $this->assertStringContainsString((string)$currentYear, $resolvedNumber);
+        $numberingCounterDataMock->expects($this->once())->method('getCurrent');
+        $numberingCounterDataMock->expects($this->once())->method('getContextObjectValue');
+
+        $patternResolver = new NumberingPatternResolver();
+        $resolvedNumber = $patternResolver->resolve($testPattern, $numberingCounterDataMock);
+
         $this->assertStringContainsString((string)$randNumber, $resolvedNumber);
         $this->assertStringContainsString((string)$testContextValue, $resolvedNumber);
     }
-
 
 }

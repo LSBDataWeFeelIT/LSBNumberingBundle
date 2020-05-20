@@ -1,11 +1,32 @@
 services:
 
+    LSB\NumberingBundle\Service\NumberingPatternResolver:
+        public: true
+
+    lsb_numbering.numbering_pattern_resolver:
+        alias: LSB\NumberingBundle\Service\NumberingPatternResolver
+        public: true
+
+
+    LSB\NumberingBundle\Service\NumberingPatternTagVerifier:
+        public: true
+
+    lsb_numbering.numbering_pattern_tag_verifier:
+        alias: LSB\NumberingBundle\Service\NumberingPatternTagVerifier
+        public: true
+
+
     LSB\NumberingBundle\Service\NumberingGenerator:
         public: true
         arguments:
             - '@doctrine'
+            - '@lsb_numbering.numbering_pattern_tag_verifier'
+            - '@lsb_numbering.numbering_pattern_resolver'
 
     lsb_numbering.numbering_generator:
         alias: LSB\NumberingBundle\Service\NumberingGenerator
         public: true
+
+
+
 
