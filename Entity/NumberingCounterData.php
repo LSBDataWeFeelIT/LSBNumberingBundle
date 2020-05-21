@@ -20,7 +20,7 @@ class NumberingCounterData
     const DEFAULT_STEP = 1;
 
     /**
-     * @var integer
+     * @var integer|null
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(type="integer")
@@ -30,8 +30,8 @@ class NumberingCounterData
     /**
      * Pattern name from configuration
      *
-     * @var string
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @var string|null
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max=255)
      */
     protected $configName;
@@ -67,8 +67,8 @@ class NumberingCounterData
     /**
      * FQCN of the subject object
      *
-     * @var string
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @var string|null
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max=255)
      */
     protected $subjectFQCN;
@@ -121,41 +121,41 @@ class NumberingCounterData
     public function __clone()
     {
         if ($this->getId()) {
-            $this->id = null;
+            $this->setId(null);
         }
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
-     * @return NumberingCounterData
+     * @param int|null $id
+     * @return $this
      */
-    public function setId(int $id): NumberingCounterData
+    public function setId(?int $id): NumberingCounterData
     {
         $this->id = $id;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getConfigName(): string
+    public function getConfigName(): ?string
     {
         return $this->configName;
     }
 
     /**
-     * @param string $configName
+     * @param string|null $configName
      * @return NumberingCounterData
      */
-    public function setConfigName(string $configName): NumberingCounterData
+    public function setConfigName(?string $configName): NumberingCounterData
     {
         $this->configName = $configName;
         return $this;
@@ -216,18 +216,18 @@ class NumberingCounterData
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSubjectFQCN(): string
+    public function getSubjectFQCN(): ?string
     {
         return $this->subjectFQCN;
     }
 
     /**
-     * @param string $subjectFQCN
+     * @param string|null $subjectFQCN
      * @return NumberingCounterData
      */
-    public function setSubjectFQCN(string $subjectFQCN): NumberingCounterData
+    public function setSubjectFQCN(?string $subjectFQCN): NumberingCounterData
     {
         $this->subjectFQCN = $subjectFQCN;
         return $this;
